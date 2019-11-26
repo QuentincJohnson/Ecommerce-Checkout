@@ -11,6 +11,7 @@ let total = document.getElementById("total");
 
 let calcButt = document.getElementById("calc-butt");
 
+let promo = document.getElementById("promo");
 
 
 function roundToTwo(value) 
@@ -83,13 +84,29 @@ function addTotals() {
     + parseFloat(document.getElementById("shirts-total").innerHTML));
 
     subtotal.innerHTML = sub;
-
     tax.innerHTML = roundToTwo(sub * 0.13);
-
     total.innerHTML = sub + parseInt(tax.innerHTML);
 
 }
 
+function promoCode() {
+    let code = prompt("Enter Promotion code","")
+
+    if (code == null || code == "") {
+        alert("No code entered.")
+    } else if ( code == "NOTAX"){
+        total.innerHTML = subtotal.innerHTML
+        tax.innerHTML = 0
+
+        alert("Thank you, discount NOTAX has been applied")
+    } else if (code == "FIFTYFIFTY") {
+        alert("Thank you, discount FIFTYFIFTY has been applied")
+        total.innerHTML = roundToTwo(total.innerHTML / 2)
+    } else{
+        alert("invalid promo code")
+    }
+
+}
 
 //actions
 pantsPlus.addEventListener("click", pantsAddOne);
@@ -98,4 +115,6 @@ pantsMin.addEventListener("click", pantsMinOne);
 shirtsPlus.addEventListener("click", shirtsAddOne);
 shirtsMin.addEventListener("click", shirtsMinOne);
 
-calcButt.addEventListener("click", addTotals)
+calcButt.addEventListener("click", addTotals);
+
+promo.addEventListener("click",promoCode);
