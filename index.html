@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <h1>ECommmerce Checkout</h1>
+
+    <p class="label">Product &nbsp;&nbsp; Quantity &nbsp;&nbsp; Unit-Price &nbsp;&nbsp; Extended-Price
+    <p class="product">     
+        Pants:  &nbsp;
+        <input type="button" value="-" id="pants-min">
+        <strong id="pants-quant">0</strong> 
+        <input type="button" value="+" id="pants-plus"> &nbsp;
+        <strong id="pants-price">$40.99</strong> &nbsp;
+        <span>$</span><strong id="pants-total">0</strong>
+     </p>
+
+     <p class="product">     
+            Shirt:  &nbsp;
+            <input type="button" value="-" id="shirts-min">
+            <strong id="shirts-quant">0</strong> 
+            <input type="button" value="+" id="shirts-plus"> &nbsp;
+            <strong id="shirts-price">$10.99</strong> &nbsp;
+            <span>$</span><strong id="shirts-total">0</strong>
+     </p>
+     <p>
+         <input type="button" value="Calculate" id="calc-butt" class="calculate-size">
+     </p>
+
+
+     <section class="totals">
+         <h2>Subtotal: <span id="subtotal"></span> </h2>
+         <h2>Tax: <span id="tax"></span> </h2>
+         <h2>Total: <span id="total"`></span> </h2>
+     </section>
+
+
+</body>
+    <script src="/js/index.js"></script>
+
+</html>
