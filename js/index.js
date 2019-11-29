@@ -14,11 +14,6 @@ let calcButt = document.getElementById("calc-butt");
 let promo = document.getElementById("promo");
 
 
-function roundToTwo(value) 
-{
-    return(Math.round(value * 100) / 100);
-}
-
 //pants
 function pantsAddOne()
 {
@@ -26,7 +21,7 @@ function pantsAddOne()
     qty += 1;
     document.getElementById("pants-quant").innerHTML = qty;
 
-    document.getElementById("pants-total").innerHTML = roundToTwo(qty * 40.99);
+    document.getElementById("pants-total").innerHTML = (qty * 40.99).toFixed(2);
 }
 
 function pantsMinOne()
@@ -41,7 +36,7 @@ function pantsMinOne()
         qty -= 1;
         document.getElementById("pants-quant").innerHTML = qty;
     
-        document.getElementById("pants-total").innerHTML = roundToTwo(qty * 40.99);
+        document.getElementById("pants-total").innerHTML = (qty * 40.99).toFixed(2);
     }
 
 }
@@ -53,7 +48,7 @@ function shirtsAddOne()
     qty += 1;
     document.getElementById("shirts-quant").innerHTML = qty;
 
-    document.getElementById("shirts-total").innerHTML = roundToTwo(qty * 10.99);
+    document.getElementById("shirts-total").innerHTML = (qty * 10.99).toFixed(2);
 }
 
 function shirtsMinOne()
@@ -67,7 +62,7 @@ function shirtsMinOne()
         qty -= 1;
         document.getElementById("shirts-quant").innerHTML = qty;
 
-        document.getElementById("shirts-total").innerHTML = roundToTwo(qty * 10.99);
+        document.getElementById("shirts-total").innerHTML = (qty * 10.99).toFixed(2);
 
     }
     
@@ -78,30 +73,36 @@ function addTotals() {
     
    
     
-    let sub = roundToTwo( 
+    let sub = 
     parseFloat(document.getElementById
     ("pants-total").innerHTML) 
-    + parseFloat(document.getElementById("shirts-total").innerHTML));
+    + parseFloat(document.getElementById("shirts-total").innerHTML);
 
-    subtotal.innerHTML = sub;
-    tax.innerHTML = roundToTwo(sub * 0.13);
-    total.innerHTML = sub + parseInt(tax.innerHTML);
+
+    subtotal.innerHTML = sub.toFixed(2);
+    tax.innerHTML = (sub * 0.13).toFixed(2);
+    total.innerHTML = (sub + parseInt(tax.innerHTML)).toFixed(2);
 
 }
 
+let codeUsed = true
 function promoCode() {
     let code = prompt("Enter Promotion code","")
 
-    if (code == null || code == "") {
+    if (codeUsed == false) {
+        alert("you have already used a code.")
+    }else if (code == null || code == "") {
         alert("No code entered.")
     } else if ( code == "NOTAX"){
         total.innerHTML = subtotal.innerHTML
         tax.innerHTML = 0
-
+        codeUsed = false
         alert("Thank you, discount NOTAX has been applied")
     } else if (code == "FIFTYFIFTY") {
+        total.innerHTML = (total.innerHTML / 2).toFixed(2)
+        codeUsed = false
         alert("Thank you, discount FIFTYFIFTY has been applied")
-        total.innerHTML = roundToTwo(total.innerHTML / 2)
+        
     } else{
         alert("invalid promo code")
     }
